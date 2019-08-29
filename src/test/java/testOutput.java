@@ -11,42 +11,40 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 
-public class testOutput {
+class testOutput {
+
+    private static ApplicationContext applicationContext=
+            new ClassPathXmlApplicationContext("applicationBean.xml");
+
     @Test
     @DisplayName("Spring bean测试")
-    public void run() {
-        ApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("applicationBean.xml");
+    void run() {
         HelloWorld helloWorld = (HelloWorld) applicationContext.getBean("helloWorld");
         helloWorld.say();
     }
 
     @Test
     @DisplayName("Spring bean测试")
-    public void run1() {
-        ApplicationContext applicationContext =
-                new ClassPathXmlApplicationContext("applicationBean.xml");
+    void run1() {
         HelloWorldService helloWorld = (HelloWorldService) applicationContext.getBean("helloWorldService");
         helloWorld.say();
     }
 
     @Test
-    public void run3(){
-        ApplicationContext context=new ClassPathXmlApplicationContext("beanassemble.xml");
-        System.out.println(context.getBean("user1"));
-        System.out.println(context.getBean("user2"));
+    void run3(){
+        System.out.println(applicationContext.getBean("user1"));
+        System.out.println(applicationContext.getBean("user2"));
     }
 
     @Test
     @DisplayName("注解测试")
-    public void run4(){
-        ApplicationContext context=new ClassPathXmlApplicationContext("beansannotation.xml");
-        UserController userController=(UserController)context.getBean("userController");
+    void run4(){
+        UserController userController=(UserController)applicationContext.getBean("userController");
         userController.save();
     }
 
     @Test
-    public void run5(){
+    void run5(){
         JdkProxy jdkProxy=new JdkProxy();
         UserDao userDao=new UserDaoImpl() ;
 
@@ -56,7 +54,7 @@ public class testOutput {
     }
 
     @Test
-    public void run6(){
+    void run6(){
         CglibProxy cglibProxy=new CglibProxy();
 
         com.itheima.cglib.UserDao userDao=new com.itheima.cglib.UserDao();
@@ -65,8 +63,7 @@ public class testOutput {
         userDao1.deleteUser();
     }
     @Test
-    public void run7(){
-        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("factory.xml");
+    void run7(){
         UserDao userDao=(UserDao) applicationContext.getBean("userDaoProxy");
         userDao.addUser();
         userDao.deleteUser();
