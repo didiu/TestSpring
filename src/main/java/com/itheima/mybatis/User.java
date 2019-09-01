@@ -1,6 +1,6 @@
-package com.itheima.po;
+package com.itheima.mybatis;
 
-public class User11 {
+public class User {
     private Integer id;
     private String name;
 

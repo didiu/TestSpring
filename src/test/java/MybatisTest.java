@@ -1,4 +1,4 @@
-import com.itheima.po.User11;
+import com.itheima.mybatis.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Test;
 
 import java.io.InputStream;
 
-public class po {
+class MybatisTest {
 
     @Test
-    public void run() throws Exception{
+    void run() throws Exception{
 
         InputStream inputStream= Resources.getResourceAsStream("configmybatis.xml");
 
@@ -19,7 +19,7 @@ public class po {
         SqlSession session=sqlSessionFactory.openSession();
 
         //User11 user=session.selectOne("Mapper.findDateById",11);
-        User11 user=session.selectOne("test.findDateById",11);
+        User user=session.selectOne("test.findDateById",13422011);
 
         System.out.println(user.toString());
 

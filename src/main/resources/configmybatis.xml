@@ -7,8 +7,8 @@
         <environment id="mysql">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://139.180.202.218:3306/new_schema"/>
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://139.180.202.218:3306/testSql"/>
                 <property name="username" value="root"/>
                 <property name="password" value="12345"/>
             </dataSource>

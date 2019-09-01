@@ -57,6 +57,7 @@ class testOutput {
     }
 
     @Test
+    @DisplayName("cglib动态代理测试")
     void run6(){
         CglibProxy cglibProxy=new CglibProxy();
 
