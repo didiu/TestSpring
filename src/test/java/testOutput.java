@@ -19,6 +19,7 @@ class testOutput {
     @Test
     @DisplayName("Spring bean测试")
     void run() {
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("applicationBean.xml");
         HelloWorld helloWorld = (HelloWorld) applicationContext.getBean("helloWorld");
         helloWorld.say();
     }
@@ -39,11 +40,13 @@ class testOutput {
     @Test
     @DisplayName("注解测试")
     void run4(){
-        UserController userController=(UserController)applicationContext.getBean("userController");
+        ApplicationContext applicationContext=new ClassPathXmlApplicationContext("annotationBeans.xml");
+        UserController userController=(UserController)applicationContext.getBean("userController1");
         userController.save();
     }
 
     @Test
+    @DisplayName("jdk动态代理测试")
     void run5(){
         JdkProxy jdkProxy=new JdkProxy();
         UserDao userDao=new UserDaoImpl() ;

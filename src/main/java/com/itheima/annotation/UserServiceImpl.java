@@ -1,13 +1,13 @@
 package com.itheima.annotation;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 
-@Service("userService")
+@Component("userService1")
 public class UserServiceImpl implements UserService{
-    @Autowired
+
+    @Resource(name = "userDao1")
     private UserDao userDao;
     public void save(){
         this.userDao.save();
